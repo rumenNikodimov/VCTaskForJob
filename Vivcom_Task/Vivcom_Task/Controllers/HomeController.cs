@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
@@ -12,7 +13,8 @@ namespace Vivcom_Task.Controllers
     {
         public IActionResult Index()
         {
-            return View();
+            var dirs = GetDirectory();
+            return View(dirs);
         }
 
         public IActionResult About()
@@ -38,6 +40,20 @@ namespace Vivcom_Task.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+
+        private IEnumerable<string> GetDirectory()
+        {
+            var projectDirectory = Directory.GetCurrentDirectory();
+            var logFilesDirectoryRelativePath = @"\Logs";
+
+            var fullPath = projectDirectory + logFilesDirectoryRelativePath;
+
+            IEnumerable<string>
+                dirs = new List<string>
+                    (Directory.EnumerateDirectories(fullPath));
+
+            return dirs;
         }
     }
 }

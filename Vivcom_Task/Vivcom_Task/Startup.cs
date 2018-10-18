@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
@@ -66,6 +67,48 @@ namespace Vivcom_Task
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
+
+
+        //    var directories = this.GetDirectory();
+
+        //    foreach (var dir in directories)
+        //    {
+        //        var filesPath = Directory.GetFiles(dir);
+
+        //        foreach (var file in filesPath)
+        //        {
+        //            string fileContent = default(string);
+
+        //            try
+        //            {
+        //                fileContent = File.ReadAllText(file);
+
+        //            }
+        //            catch (Exception ex)
+        //            {
+        //                throw ex;
+        //            }
+        //        }
+
+        //        // Do something with file content
+
+        //        // Uncomment to save file if necessary
+        //        // File.WriteAllText(fileWithModifiedContent)
+        //    }
+        //}
+
+        //private IEnumerable<string> GetDirectory()
+        //{
+        //    var projectDirectory = Directory.GetCurrentDirectory();
+        //    var logFilesDirectoryRelativePath = @"\Logs";
+
+        //    var fullPath = projectDirectory + logFilesDirectoryRelativePath;
+
+        //    IEnumerable<string>
+        //        dirs = new List<string>
+        //            (Directory.EnumerateDirectories(fullPath));
+
+        //    return dirs;
         }
     }
 }
